@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+
+<link rel="stylesheet" href="/home/administrateur/AP/GSB_P1/GSB_P1/src/app/connexion/connexion.component.scss">
+
+<div class="centrer">
+    <h1>
+        {{titre}}
+    </h1>
+
+    <b>
+        <p>Login</p>
+    </b>
+    <base href="/">
+    <form class="col-lg-6" name="frmLogin" (ngSubmit)="valider()">
+        <title>GSB gestion des rapports de visite</title>
+
+        <input type="text" name="lg" [(ngModel)]="login" />
+        <p>Votre login : {{login}}</p>
+        <b>
+            <p>Mot de passe </p>
+        </b>
+        <input type="password" name="pw" [(ngModel)]="mdp" />
+        <br><br>
+        <div class="button">
+        <input type="submit" value="valider">
+        <br><br>
+    </div>
+        <div class="alert alert-danger" [hidden]="estCache">{{lblMessage}} </div>
+    </form>
+</div>
