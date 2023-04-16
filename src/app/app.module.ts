@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MedecinsComponent } from './medecins/medecins.component';
+import { HttpClientModule } from '@angular/common/http';
 import { VisitesComponent } from './visites/visites.component';
+import { DataService } from './services/app.service.data';
  
 
 @NgModule({
@@ -17,14 +19,16 @@ import { VisitesComponent } from './visites/visites.component';
     NavbarComponent,
     MedecinsComponent,
     VisitesComponent
+    
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
