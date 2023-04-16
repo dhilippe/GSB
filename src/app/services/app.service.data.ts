@@ -45,4 +45,10 @@ public chargerMedecins(nomMedecin: string){
         let req = this.http.get<Array <any>>(url);
         return req;
         }
+
+        public majMedecin(id : string ,adresse : string, tel : string, spe : string) {
+          let url = this.urlAPI + "/medecins/" + id;
+          let req = this.http.get<string>(url);
+          return req;
+        }
 }

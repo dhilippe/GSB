@@ -10,6 +10,7 @@ import { MedecinsComponent } from './medecins/medecins.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VisitesComponent } from './visites/visites.component';
 import { DataService } from './services/app.service.data';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
  
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DataService } from './services/app.service.data';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -11,7 +11,6 @@ export class MedecinsComponent implements OnInit {
   nomMedecin: any;
   lesMedecins: any;
   titre: string = 'Les medecins';
-  majMedecin: any;
   estCacheMenu = false;
   medecin: any;
   afficherRapports: any;
@@ -25,6 +24,16 @@ export class MedecinsComponent implements OnInit {
   nomvisiteur: any;
   idMedecin: any;
   afficherListe: any;
+  afficherMedecin: any;
+
+  valider: any;
+  afficherMessage: any;
+  lblMessage:any;
+  adresse: any;
+  spe: any;
+  tel: any;
+  id: any;
+  
 
   constructor(private router: Router, private dataService: DataService) {}
 
@@ -45,11 +54,19 @@ export class MedecinsComponent implements OnInit {
   selectionner(med: any): void {
     this.medecin = med; 
     this.idMedecin = med.id;
-    this.nomMedecin = med.nom + ' ' + med.prenom + '; dep + ' + med.departement;
+    this.nomMedecin = med.nom + ' ' + med.prenom + '; dep : ' + med.departement;
     this.charger(); 
     
   }
   
+  majMedecin(id : string ,adresse : string, tel : string, spe : string): void {
+    this.adresse = adresse;
+    this.id = id;
+    this.tel = tel;
+    this.spe = spe;
+    this.dataService.majMedecin(this.id, this.adresse, this.tel, this.spe)
+
+  }
 
    derniersRapports(): void {
    this.dataService.chargerRapports(this.idMedecin).subscribe({
