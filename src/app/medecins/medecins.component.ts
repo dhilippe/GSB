@@ -24,15 +24,16 @@ export class MedecinsComponent implements OnInit {
   nomvisiteur: any;
   idMedecin: any;
   afficherListe: any;
-  afficherMedecin: any;
 
-  valider: any;
   afficherMessage: any;
   lblMessage:any;
   adresse: any;
   spe: any;
   tel: any;
   id: any;
+  afficherMedecin: any;
+ 
+  
   
 
   constructor(private router: Router, private dataService: DataService) {}
@@ -59,14 +60,24 @@ export class MedecinsComponent implements OnInit {
     
   }
   
-  majMedecin(id : string ,adresse : string, tel : string, spe : string): void {
-    this.adresse = adresse;
-    this.id = id;
-    this.tel = tel;
-    this.spe = spe;
-    this.dataService.majMedecin(this.id, this.adresse, this.tel, this.spe)
+  valider(): void{
+    this.afficherMessage = true;
+     this.dataService.majMedecin(this.medecin.id,this.medecin.adresse,this.medecin.tel,this.medecin.specialitecomplementaire)
+                               .subscribe( 
+                                   (data)=>{ this.lblMessage= "Enregistrement effectué";
+                                      }
+                                   ,(error)=>{this.lblMessage= "Merci de réessayer plus tard";}
+                                           );
+   }
 
+  majMedecin() : void{
+    this.afficherRapports = false;
+    this.afficherMedecin = true;
+    this.afficherMessage = false;
+  
   }
+  
+  
 
    derniersRapports(): void {
    this.dataService.chargerRapports(this.idMedecin).subscribe({
@@ -74,7 +85,7 @@ export class MedecinsComponent implements OnInit {
       this.lesRapports = Array.of(data);
       this.afficherRapports=true;
     
-      
+    
     },
     error: (error) => {
       console.log(error);
