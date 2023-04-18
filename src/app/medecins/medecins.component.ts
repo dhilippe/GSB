@@ -66,6 +66,7 @@ export class MedecinsComponent implements OnInit {
       .subscribe({
         next: data => {
           this.lblMessage = "Enregistrement effectué";
+          
         },
         error: error => {
           console.log("Erreur lors de la requête HTTP :", error);
