@@ -47,8 +47,15 @@ public chargerMedecins(nomMedecin: string){
         }
 
           public majMedecin(id: string, adresse: string, tel: string, spe: string){
-    let url = this.urlAPI + "/majMedecin" + id + adresse + tel + spe;
-    let req = this.http.get<Array<any>>(url);
+            
+            const body = {
+              id: id,
+              adresse: adresse,
+              tel: tel,
+              specialite: spe,
+            };
+    let url: string = this.urlAPI + "/majMedecin";
+    let req = this.http.put<Array<any>>(url, body);
     return req;
   }
 

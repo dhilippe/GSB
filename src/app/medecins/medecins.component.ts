@@ -60,15 +60,19 @@ export class MedecinsComponent implements OnInit {
     
   }
   
-  valider(): void{
+  valider(): void {
     this.afficherMessage = true;
-     this.dataService.majMedecin(this.medecin.id,this.medecin.adresse,this.medecin.tel,this.medecin.specialitecomplementaire)
-                               .subscribe( 
-                                   (data)=>{ this.lblMessage= "Enregistrement effectué";
-                                      }
-                                   ,(error)=>{this.lblMessage= "Merci de réessayer plus tard";}
-                                           );
-   }
+    this.dataService.majMedecin(this.medecin.id, this.medecin.adresse, this.medecin.tel, this.medecin.specialitecomplementaire)
+      .subscribe({
+        next: data => {
+          this.lblMessage = "Enregistrement effectué";
+        },
+        error: error => {
+          console.log("Erreur lors de la requête HTTP :", error);
+          this.lblMessage = "Merci de réessayer plus tard";
+        }
+      });
+  }
 
   majMedecin() : void{
     this.afficherRapports = false;
